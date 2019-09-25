@@ -31,9 +31,10 @@ const findAndUpdateName = function(id, newName) {
   }
 };
 const findAndDelete = function(id) {
-  const removeItem = findById(id);
-  const removeIndex = removeItem.findIndex();
-  removeItem.splice(removeIndex, 1);
+  const removeItem = items.find(fdID => fdID.id === id );
+  console.log(removeItem);
+  //const removeIndex = removeItem.findIndexOf();
+  items.splice(removeItem, 1);
 };
 export default {
   items,
