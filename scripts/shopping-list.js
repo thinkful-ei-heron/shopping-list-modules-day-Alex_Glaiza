@@ -141,6 +141,3 @@ export default {
   render,
   bindEventListeners
 };
-
-console.log(store);
-console.log(foo);
