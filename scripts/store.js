@@ -1,12 +1,13 @@
 import item from './item.js';
+
 const items = [];
 const hideCheckedItems = false;
-const findById = function(id) {
-  const findItem = items.find((storeid) => storeid.id === id); 
-  console.log(findItem);
-  return findItem;
+
+const findById = function (id) {
+  return items.find(item => item.id === id);
 };
-const addItem  = function(name) {
+
+const addItem  = function (name) {
   try {
     item.validateName(name);
     const test = item.create(name);
@@ -16,13 +17,15 @@ const addItem  = function(name) {
     console.log(`Cannot add item: ${e.messsage}`);
   }
 };
-const findAndToggleChecked = function(id) {
-  const check = this.findById(id);
-  return !check.checked;
+
+const findAndToggleChecked = function (id) {
+  const check = findById(id);
+  check.checked = !check.checked;
 };
+
 const findAndUpdateName = function(id, newName) {
   try {
-    validateName(newName);
+    item.validateName(newName);
     const nameReplace = findById(id);
     nameReplace.name = newName;
   }
@@ -30,11 +33,11 @@ const findAndUpdateName = function(id, newName) {
     console.log(`Cannot update name: ${e.messsage}`);
   }
 };
+
 const findAndDelete = function(id) {
-  const removeItem = findById(id);
-  const removeIndex = removeItem.findIndex();
-  removeItem.splice(removeIndex, 1);
+  this.items = this.items.filter(item => item.id !== id);
 };
+
 export default {
   items,
   hideCheckedItems,
